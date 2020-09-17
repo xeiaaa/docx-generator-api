@@ -45,7 +45,18 @@ const createCell = (text = '', isBold = false, isItalicized = false, width) => {
   return new TableCell(cellData)
 }
 
-module.exports = () => {
+module.exports = (services) => {
+  const {
+    accessFee = '[ACCESS_FEE]',
+    allotment = '[ALLOTMENT]',
+    credentialsOrEarners = 'credentials',
+  } = services
+
+  const accessStatement =
+    credentialsOrEarners === 'credentials'
+      ? `Issuer may issue ${allotment} Credentials per year.`
+      : `Issuer may issue Credentials to ${allotment} Active Earners per year.`
+
   return new Table({
     rows: [
       new TableRow({
@@ -60,7 +71,7 @@ module.exports = () => {
         children: [
           createCell('Access to the Credly System', true, false),
           createCell(
-            `[ACCESS STATEMENT]\n\nCredly will provide Issuer support and maintenance as described in the Agreement.`,
+            `${accessStatement}\n\nCredly will provide Issuer support and maintenance as described in the Agreement.`,
           ),
           createCell('[ACCESS FEE] '),
         ],

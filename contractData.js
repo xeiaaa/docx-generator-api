@@ -19,6 +19,11 @@ const contractData = {
     autoRenew: false,
     paymentTerms: 'annually', // quarterly, annually
   },
+  services: {
+    accessFee: '[ACCESS_FEE]',
+    allotment: '[ALLOTMENT]',
+    credentialsOrEarners: 'activeEarners', // credentials, activeEarners
+  },
 }
 
 module.exports = contractData

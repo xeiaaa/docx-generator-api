@@ -29,7 +29,7 @@ const generateContract = async (contractData = {}) => {
     numbering,
   })
 
-  const { issuer, agreement, agreementList } = contractData
+  const { issuer, agreement, agreementList, services } = contractData
 
   doc.addSection({
     properties: {},
@@ -42,7 +42,7 @@ const generateContract = async (contractData = {}) => {
       blocks.emptyLine(),
       ...blocks.agreementList(agreementList),
       blocks.emptyLine(),
-      blocks.servicesTable(),
+      blocks.servicesTable(services),
       blocks.emptyLine(),
       blocks.emptyLine(),
       blocks.emptyLine('Optional:', true),
