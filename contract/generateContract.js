@@ -1,28 +1,8 @@
 const fs = require('fs')
-const { Document, Packer, AlignmentType } = require('docx')
+const { Document, Packer } = require('docx')
 
 const blocks = require('./blocks')
-
-const numbering = {
-  config: [
-    {
-      levels: [
-        {
-          level: 0,
-          format: 'decimal',
-          text: '%1',
-          alignment: AlignmentType.START,
-          style: {
-            paragraph: {
-              indent: { left: 0, right: 360, hanging: 0 },
-            },
-          },
-        },
-      ],
-      reference: 'default-reference',
-    },
-  ],
-}
+const numbering = require('./numbering')
 
 const generateContract = async (contractData = {}) => {
   const doc = new Document({
