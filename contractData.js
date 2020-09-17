@@ -40,6 +40,12 @@ const contractData = {
     */
     numberOfHistoricalActiveEarners: '1000',
     feeForHistoricalActiveEarners: '5000',
+
+    willPurchaseDirectory: true,
+    employeeDirectoryFee: '1000',
+
+    excessCredentialFee: '8888',
+    excessActiveEarnerFee: '9999',
   },
 }
 

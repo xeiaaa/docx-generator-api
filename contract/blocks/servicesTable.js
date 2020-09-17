@@ -69,8 +69,14 @@ module.exports = (services) => {
     willPurchaseImplementation = false,
     numberOfHistoricCredentials = '',
     feeForHistoricCredentials = '',
-    numberOfHistoricalActiveEarners = '1000',
-    feeForHistoricalActiveEarners = '5000',
+    numberOfHistoricalActiveEarners = '',
+    feeForHistoricalActiveEarners = '',
+
+    willPurchaseDirectory = false,
+    employeeDirectoryFee = '',
+
+    excessCredentialFee = '8888',
+    excessActiveEarnerFee = '9999',
   } = services
 
   const accessStatement =
@@ -157,6 +163,50 @@ module.exports = (services) => {
             `Issuer may issue Credentials to an additional ${numberOfHistoricalActiveEarners} Active Earners during the first contract year of the Term for recognition of achievements before the Effective Date of this Order Form.`,
           ),
           createCell(`$${feeForHistoricalActiveEarners}`),
+        ],
+      }),
+    )
+  }
+
+  // WILL PURCHASE DIRECTORY
+  if (willPurchaseDirectory) {
+    rows.push(
+      new TableRow({
+        children: [
+          createCell('Talent Directory Access', true),
+          createCell(
+            `Issuer shall have access to the Talent Directory feature.`,
+          ),
+          createCell(`$${employeeDirectoryFee} per year`),
+        ],
+      }),
+    )
+  }
+
+  // EXCESS FEE
+  if (credentialsOrEarners === 'credentials') {
+    rows.push(
+      new TableRow({
+        children: [
+          createCell('Excess Credential Fee', true),
+          createCell(
+            `Fee to issue Credentials in excess of the limit for this Credential Package.`,
+          ),
+          createCell(`$${excessCredentialFee} per excess Credential`),
+        ],
+      }),
+    )
+  }
+
+  if (credentialsOrEarners === 'activeEarners') {
+    rows.push(
+      new TableRow({
+        children: [
+          createCell('Excess Active Earner Fee', true),
+          createCell(
+            `Fee to issue Credentials to Earners in excess of the Active Earner limit.`,
+          ),
+          createCell(`$${excessActiveEarnerFee} per excess Active Earner`),
         ],
       }),
     )
