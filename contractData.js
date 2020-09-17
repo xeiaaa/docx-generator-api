@@ -22,9 +22,24 @@ const contractData = {
   services: {
     accessFee: '[ACCESS_FEE]',
     allotment: '[ALLOTMENT]',
-    credentialsOrEarners: 'credentials', // credentials, activeEarners
-    willPurchaseImplementation: false,
+    credentialsOrEarners: 'activeEarners', // credentials, activeEarners
+    willPurchaseImplementation: true,
     implementation: 'selfPaced', // selfPaced, workshop, standard,
+    /*
+      if credentialsOrEarners === credentials
+      ask for
+      numberOfHistoricCredentials
+      feeForHistoricCredentials
+    */
+    numberOfHistoricCredentials: '100',
+    feeForHistoricCredentials: '14000',
+    /*
+      if credentialsOrEarners === activeEarners
+      numberOfHistoricalActiveEarners
+      feeForHistoricalActiveEarners
+    */
+    numberOfHistoricalActiveEarners: '1000',
+    feeForHistoricalActiveEarners: '5000',
   },
 }
 

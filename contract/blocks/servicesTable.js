@@ -67,6 +67,10 @@ module.exports = (services) => {
     credentialsOrEarners = 'credentials',
     implementation = 'selfPaced',
     willPurchaseImplementation = false,
+    numberOfHistoricCredentials = '',
+    feeForHistoricCredentials = '',
+    numberOfHistoricalActiveEarners = '1000',
+    feeForHistoricalActiveEarners = '5000',
   } = services
 
   const accessStatement =
@@ -74,7 +78,7 @@ module.exports = (services) => {
       ? `Issuer may issue ${allotment} Credentials per year.`
       : `Issuer may issue Credentials to ${allotment} Active Earners per year.`
 
-  let rows = [
+  const rows = [
     new TableRow({
       children: [
         createCell('SERVICES', true, false, 22),
@@ -92,8 +96,79 @@ module.exports = (services) => {
         createCell('[ACCESS FEE] '),
       ],
     }),
+  ]
 
-    new TableRow({
+  // IMPLEMENTATION
+  if (willPurchaseImplementation && implementation) {
+    let nameOfImplementation = ''
+    let textOfImplementationCellData
+    switch (implementation) {
+      case 'selfPaced':
+        nameOfImplementation = 'Self-Paced Onboarding'
+        textOfImplementationCellData = selfPacedImplementationCell
+        break
+      case 'workshop':
+        nameOfImplementation = 'Workshop Package'
+        textOfImplementationCellData = workshopImplementationCell
+        break
+      case 'standard':
+        nameOfImplementation = 'Standard Implementation'
+        textOfImplementationCellData = standardImplementationCell
+        break
+      default:
+        break
+    }
+
+    const textOfImplementationCell = new TableCell(textOfImplementationCellData)
+
+    const textOfImplementationRow = new TableRow({
+      children: [
+        createCell(nameOfImplementation, true),
+        textOfImplementationCell,
+        createCell('[IMPLEMENTATION_FEE]'),
+      ],
+    })
+
+    rows.push(textOfImplementationRow)
+  }
+
+  // HISTORIC CREDENTIALS
+  if (credentialsOrEarners === 'credentials') {
+    rows.push(
+      new TableRow({
+        children: [
+          createCell('Historical Credential Allotment', true),
+          createCell(
+            `Issuer may issue an additional ${numberOfHistoricCredentials} Credentials during the first contract year of the Term for recognition of achievements before the Effective Date of this Order Form.`,
+          ),
+          createCell(`$${feeForHistoricCredentials}`),
+        ],
+      }),
+    )
+  }
+
+  // HISTORIC ACTIVE EARNERS
+  if (credentialsOrEarners === 'activeEarners') {
+    rows.push(
+      new TableRow({
+        children: [
+          createCell('Historical Active Earner Allotment', true),
+          createCell(
+            `Issuer may issue Credentials to an additional ${numberOfHistoricalActiveEarners} Active Earners during the first contract year of the Term for recognition of achievements before the Effective Date of this Order Form.`,
+          ),
+          createCell(`$${feeForHistoricalActiveEarners}`),
+        ],
+      }),
+    )
+  }
+
+  const tableData = { rows }
+
+  return new Table(tableData)
+}
+
+/*
+new TableRow({
       children: [
         createCell('Historical Credential Allotment', true),
         createCell(
@@ -130,42 +205,4 @@ module.exports = (services) => {
         createCell('$2,500 per year'),
       ],
     }),
-  ]
-
-  if (willPurchaseImplementation && implementation) {
-    let nameOfImplementation = ''
-    let textOfImplementationCellData
-    switch (implementation) {
-      case 'selfPaced':
-        nameOfImplementation = 'Self-Paced Onboarding'
-        textOfImplementationCellData = selfPacedImplementationCell
-        break
-      case 'workshop':
-        nameOfImplementation = 'Workshop Package'
-        textOfImplementationCellData = workshopImplementationCell
-        break
-      case 'standard':
-        nameOfImplementation = 'Standard Implementation'
-        textOfImplementationCellData = standardImplementationCell
-        break
-      default:
-        break
-    }
-
-    const textOfImplementationCell = new TableCell(textOfImplementationCellData)
-
-    const textOfImplementationRow = new TableRow({
-      children: [
-        createCell(nameOfImplementation, true),
-        textOfImplementationCell,
-        createCell('[IMPLEMENTATION_FEE]'),
-      ],
-    })
-
-    rows = [...rows.slice(0, 2), textOfImplementationRow, ...rows.slice(2)]
-  }
-
-  const tableData = { rows }
-
-  return new Table(tableData)
-}
+*/
