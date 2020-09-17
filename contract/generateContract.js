@@ -35,7 +35,10 @@ const generateContract = async (contractData = {}) => {
   })
 
   const buffer = await Packer.toBuffer(doc)
-  fs.writeFileSync(`docs/doc-${+new Date()}.docx`, buffer)
+  const filename = `docs/doc-${+new Date()}.docx`
+  fs.writeFileSync(filename, buffer)
+
+  return filename
 }
 
 module.exports = generateContract

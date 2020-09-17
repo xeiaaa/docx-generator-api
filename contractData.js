@@ -14,6 +14,7 @@ const contractData = {
       1) “the first day of the month following the date that this Order Form is signed by duly authorized representatives of the parties”
       2) Other (to be entered)
     */
+    isFirstDayOfMonth: true,
     startDate: 'September 18, 2020',
     term: '[TERM]',
     autoRenew: false,
@@ -27,19 +28,19 @@ const contractData = {
     implementation: 'selfPaced', // selfPaced, workshop, standard,
     /*
       if credentialsOrEarners === credentials
-      ask for
-      numberOfHistoricCredentials
-      feeForHistoricCredentials
     */
+    willPurchaseHistoricCredentials: true,
     numberOfHistoricCredentials: '100',
     feeForHistoricCredentials: '14000',
     /*
       if credentialsOrEarners === activeEarners
-      numberOfHistoricalActiveEarners
-      feeForHistoricalActiveEarners
     */
+    willPurchaseHistoricalActiveEarners: true,
     numberOfHistoricalActiveEarners: '1000',
     feeForHistoricalActiveEarners: '5000',
+
+    willPurchaseTalentDirectory: true,
+    talentDirectoryFee: '1000',
 
     willPurchaseDirectory: true,
     employeeDirectoryFee: '1000',

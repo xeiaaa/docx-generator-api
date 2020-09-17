@@ -11,6 +11,7 @@ const createLine = (text, isBold) => {
 
 module.exports = (agreementListInfo) => {
   const {
+    isFirstDayOfMonth = false,
     startDate = '',
     term = '',
     paymentTerms = 'quarterly',
@@ -22,7 +23,11 @@ module.exports = (agreementListInfo) => {
   const firstParagraphChildren = [
     createLine(`Term. `, true),
     createLine(
-      `The term of this Order Form shall begin on ${startDate} (the “`,
+      `The term of this Order Form shall begin on ${
+        isFirstDayOfMonth
+          ? 'the first day of the month following the date that this Order Form is signed by duly authorized representatives of the parties'
+          : startDate
+      } (the “`,
     ),
     createLine(`Effective Date`, true),
     createLine(

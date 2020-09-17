@@ -67,13 +67,18 @@ module.exports = (services) => {
     credentialsOrEarners = 'credentials',
     implementation = 'selfPaced',
     willPurchaseImplementation = false,
+    willPurchaseHistoricCredentials = false,
     numberOfHistoricCredentials = '',
     feeForHistoricCredentials = '',
+    willPurchaseHistoricalActiveEarners = false,
     numberOfHistoricalActiveEarners = '',
     feeForHistoricalActiveEarners = '',
 
     willPurchaseDirectory = false,
     employeeDirectoryFee = '',
+
+    willPurchaseTalentDirectory = false,
+    talentDirectoryFee = '',
 
     excessCredentialFee = '8888',
     excessActiveEarnerFee = '9999',
@@ -99,7 +104,7 @@ module.exports = (services) => {
         createCell(
           `${accessStatement}\n\nCredly will provide Issuer support and maintenance as described in the Agreement.`,
         ),
-        createCell('[ACCESS FEE] '),
+        createCell(`$${accessFee}`),
       ],
     }),
   ]
@@ -168,14 +173,29 @@ module.exports = (services) => {
     )
   }
 
-  // WILL PURCHASE DIRECTORY
-  if (willPurchaseDirectory) {
+  // WILL PURCHASE Talent DIRECTORY
+  if (willPurchaseTalentDirectory) {
     rows.push(
       new TableRow({
         children: [
           createCell('Talent Directory Access', true),
           createCell(
             `Issuer shall have access to the Talent Directory feature.`,
+          ),
+          createCell(`$${talentDirectoryFee} per year`),
+        ],
+      }),
+    )
+  }
+
+  // WILL PURCHASE DIRECTORY
+  if (willPurchaseDirectory) {
+    rows.push(
+      new TableRow({
+        children: [
+          createCell('Employee Directory Access', true),
+          createCell(
+            `Issuer shall have access to the Employee Directory feature.`,
           ),
           createCell(`$${employeeDirectoryFee} per year`),
         ],
@@ -184,7 +204,10 @@ module.exports = (services) => {
   }
 
   // EXCESS FEE
-  if (credentialsOrEarners === 'credentials') {
+  if (
+    credentialsOrEarners === 'credentials' &&
+    willPurchaseHistoricCredentials
+  ) {
     rows.push(
       new TableRow({
         children: [
@@ -198,7 +221,10 @@ module.exports = (services) => {
     )
   }
 
-  if (credentialsOrEarners === 'activeEarners') {
+  if (
+    credentialsOrEarners === 'activeEarners' &&
+    willPurchaseHistoricalActiveEarners
+  ) {
     rows.push(
       new TableRow({
         children: [
