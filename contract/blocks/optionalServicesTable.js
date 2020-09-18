@@ -33,6 +33,12 @@ const createCell = (text = '', isBold = false, isItalicized = false, width) => {
         }),
       }),
     ],
+    margins: {
+      top: 100,
+      bottom: 100,
+      left: 100,
+      right: 100,
+    },
   }
 
   if (width) {

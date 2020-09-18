@@ -9,6 +9,7 @@ const {
   AlignmentType,
   WidthType,
   BorderStyle,
+  UnderlineType,
 } = require('docx')
 
 const noBorders = {
@@ -60,6 +61,36 @@ const createCell = (text = '', isBold = false, isItalicized = false) => {
   })
 }
 
+const underlinedCell = (label, spaces) => {
+  return new TableCell({
+    children: [
+      new Paragraph({
+        children: [
+          new TextRun({
+            text: `${label}: `,
+            font: 'Times New Roman',
+            size: 22,
+          }),
+          new TextRun({
+            text: `${spaces}`,
+            font: 'Times New Roman',
+            size: 22,
+            underline: {
+              type: UnderlineType.SINGLE,
+              color: '000000',
+            },
+          }),
+        ],
+      }),
+    ],
+    borders: noBorders,
+    width: {
+      size: 50,
+      type: WidthType.PERCENTAGE,
+    },
+  })
+}
+
 module.exports = () => {
   return new Table({
     rows: [
@@ -79,25 +110,34 @@ module.exports = () => {
         children: [createCell(''), createCell('')],
       }),
       new TableRow({
-        children: [createCell('By:'), createCell('By:')],
+        children: [createCell(''), createCell('')],
+      }),
+      new TableRow({
+        children: [underlinedCell('By', '						'), underlinedCell('By', '						')],
       }),
       new TableRow({
         children: [createCell(''), createCell('')],
       }),
       new TableRow({
         children: [
-          createCell('Print Name:'),
-          createCell('Print Name: Daniel Doktori'),
+          underlinedCell('Print Name', '					'),
+          underlinedCell('Print Name', 'Daniel Doktori'),
         ],
+      }),
+      new TableRow({
+        children: [createCell(''), createCell('')],
       }),
       new TableRow({
         children: [
-          createCell('Title:'),
-          createCell('Title: Chief of Staff & General Counsel'),
+          underlinedCell('Title', '						'),
+          underlinedCell('Title', 'Chief of Staff & General Counsel'),
         ],
       }),
       new TableRow({
-        children: [createCell('Date:'), createCell('Date:')],
+        children: [createCell(''), createCell('')],
+      }),
+      new TableRow({
+        children: [underlinedCell('Date', '						'), underlinedCell('Date', '						')],
       }),
     ],
     borders: noBorders,
