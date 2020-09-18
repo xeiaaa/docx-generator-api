@@ -1,4 +1,5 @@
 const { Paragraph, TextRun, AlignmentType } = require('docx')
+const moment = require('moment')
 
 const createLine = (text, isBold) => {
   return new TextRun({
@@ -26,7 +27,7 @@ module.exports = (agreementListInfo) => {
       `The term of this Order Form shall begin on ${
         isFirstDayOfMonth
           ? 'the first day of the month following the date that this Order Form is signed by duly authorized representatives of the parties'
-          : startDate
+          : moment(startDate).format('MMMM D, YYYY')
       } (the “`,
     ),
     createLine(`Effective Date`, true),
@@ -38,7 +39,7 @@ module.exports = (agreementListInfo) => {
   if (autoRenew) {
     firstParagraphChildren.push(
       createLine(
-        `. Thereafter, this Order Form shall automatically renew for successive [one-year] periods unless either party provides written notice to the other at least thirty days prior to the end of the then-existing term of the Order Form of its election not to renew this Order Form (collectively, the “`,
+        `. Thereafter, this Order Form shall automatically renew for successive one-year periods unless either party provides written notice to the other at least thirty days prior to the end of the then-existing term of the Order Form of its election not to renew this Order Form (collectively, the “`,
       ),
     )
     firstParagraphChildren.push(createLine(`Term`, true))
@@ -48,6 +49,8 @@ module.exports = (agreementListInfo) => {
     firstParagraphChildren.push(createLine(`Term`, true))
     firstParagraphChildren.push(createLine(`”).`))
   }
+
+  firstParagraphChildren.push(createLine('').break())
 
   return [
     new Paragraph({
@@ -63,6 +66,7 @@ module.exports = (agreementListInfo) => {
         createLine(
           `Credly will invoice Issuer at the Effective Date of this Order Form and ${paymentTerms} thereafter at the beginning of each contract ${paymentTerm2}. Credly will invoice Issuer for optional items upon purchase.`,
         ),
+        createLine('').break(),
       ],
       numbering: {
         level: 0,
@@ -75,6 +79,7 @@ module.exports = (agreementListInfo) => {
         createLine(
           `The Credential Package will comprise the following services:`,
         ),
+        createLine('').break(),
       ],
       numbering: {
         level: 0,

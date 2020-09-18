@@ -47,6 +47,8 @@ const contractData = {
 
     excessCredentialFee: '8888',
     excessActiveEarnerFee: '9999',
+
+    implementationFee: '',
   },
 }
 

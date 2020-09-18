@@ -31,33 +31,63 @@ const noBorders = {
 }
 
 const createCell = (text = '', isBold = false, isItalicized = false) => {
-  let isMultiline = text.split(`\n`).length > 1
+  if (Array.isArray(text)) {
+    return new TableCell({
+      children: [
+        new Paragraph({
+          children: text.map((t, index) => {
+            const { italics = false, bold = false } = t
 
-  return new TableCell({
-    children: [
-      new Paragraph({
-        children: text.split(`\n`).map((t, index) => {
-          const data = {
-            text: t,
-            font: 'Times New Roman',
-            size: 22,
-            italics: isItalicized,
-            bold: isBold,
-          }
-          if (isMultiline && index > 0) {
-            return new TextRun(data).break()
-          } else {
-            return new TextRun(data)
-          }
+            const data = {
+              text: t.text,
+              font: 'Times New Roman',
+              size: 22,
+              italics,
+              bold,
+            }
+            if (index > 0) {
+              return new TextRun(data).break()
+            } else {
+              return new TextRun(data)
+            }
+          }),
         }),
-      }),
-    ],
-    borders: noBorders,
-    width: {
-      size: 50,
-      type: WidthType.PERCENTAGE,
-    },
-  })
+      ],
+      borders: noBorders,
+      width: {
+        size: 50,
+        type: WidthType.PERCENTAGE,
+      },
+    })
+  } else {
+    let isMultiline = text.split(`\n`).length > 1
+
+    return new TableCell({
+      children: [
+        new Paragraph({
+          children: text.split(`\n`).map((t, index) => {
+            const data = {
+              text: t,
+              font: 'Times New Roman',
+              size: 22,
+              italics: isItalicized,
+              bold: isBold,
+            }
+            if (isMultiline && index > 0) {
+              return new TextRun(data).break()
+            } else {
+              return new TextRun(data)
+            }
+          }),
+        }),
+      ],
+      borders: noBorders,
+      width: {
+        size: 50,
+        type: WidthType.PERCENTAGE,
+      },
+    })
+  }
 }
 
 module.exports = (issuer) => {
@@ -85,21 +115,21 @@ module.exports = (issuer) => {
       }),
       new TableRow({
         children: [
-          createCell('8349 5th Avenue, Suite 726'),
+          createCell([
+            { text: '8349 5th Avenue, Suite 726' },
+            { text: 'New York, NY 10016' },
+          ]),
           createCell(address),
         ],
       }),
       new TableRow({
         children: [
-          createCell('New York, NY 10016'),
-          createCell(`${corporateLocation} ${entity}`),
+          createCell('Delaware corporation', false, true),
+          createCell(`${corporateLocation} ${entity}`, false, true),
         ],
       }),
       new TableRow({
-        children: [
-          createCell('Delaware corporation', false, true),
-          createCell('', false, true),
-        ],
+        children: [createCell('', false, true), createCell('', false, true)],
       }),
     ],
     borders: noBorders,

@@ -82,6 +82,8 @@ module.exports = (services) => {
 
     excessCredentialFee = '8888',
     excessActiveEarnerFee = '9999',
+
+    implementationFee = '',
   } = services
 
   const accessStatement =
@@ -136,7 +138,7 @@ module.exports = (services) => {
       children: [
         createCell(nameOfImplementation, true),
         textOfImplementationCell,
-        createCell('[IMPLEMENTATION_FEE]'),
+        createCell(`$${implementationFee}`),
       ],
     })
 
@@ -144,7 +146,10 @@ module.exports = (services) => {
   }
 
   // HISTORIC CREDENTIALS
-  if (credentialsOrEarners === 'credentials') {
+  if (
+    credentialsOrEarners === 'credentials' &&
+    willPurchaseHistoricCredentials
+  ) {
     rows.push(
       new TableRow({
         children: [
@@ -159,7 +164,10 @@ module.exports = (services) => {
   }
 
   // HISTORIC ACTIVE EARNERS
-  if (credentialsOrEarners === 'activeEarners') {
+  if (
+    credentialsOrEarners === 'activeEarners' &&
+    willPurchaseHistoricalActiveEarners
+  ) {
     rows.push(
       new TableRow({
         children: [
@@ -204,10 +212,7 @@ module.exports = (services) => {
   }
 
   // EXCESS FEE
-  if (
-    credentialsOrEarners === 'credentials' &&
-    willPurchaseHistoricCredentials
-  ) {
+  if (credentialsOrEarners === 'credentials') {
     rows.push(
       new TableRow({
         children: [
@@ -221,10 +226,7 @@ module.exports = (services) => {
     )
   }
 
-  if (
-    credentialsOrEarners === 'activeEarners' &&
-    willPurchaseHistoricalActiveEarners
-  ) {
+  if (credentialsOrEarners === 'activeEarners') {
     rows.push(
       new TableRow({
         children: [

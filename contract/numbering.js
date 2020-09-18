@@ -7,7 +7,7 @@ const numbering = {
         {
           level: 0,
           format: 'decimal',
-          text: '%1',
+          text: '%1.',
           alignment: AlignmentType.START,
           style: {
             paragraph: {
