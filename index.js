@@ -25,7 +25,7 @@ app.post('/docx', async (req, res) => {
 
     let filename = await generateContract(contractData)
     res.download(path.join(__dirname, filename), function (err) {
-      console.log(err)
+      // console.log(err)
     })
   } catch (err) {
     console.log(err)

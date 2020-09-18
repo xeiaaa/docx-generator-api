@@ -211,35 +211,6 @@ module.exports = (services) => {
     )
   }
 
-  // EXCESS FEE
-  if (credentialsOrEarners === 'credentials') {
-    rows.push(
-      new TableRow({
-        children: [
-          createCell('Excess Credential Fee', true),
-          createCell(
-            `Fee to issue Credentials in excess of the limit for this Credential Package.`,
-          ),
-          createCell(`$${excessCredentialFee} per excess Credential`),
-        ],
-      }),
-    )
-  }
-
-  if (credentialsOrEarners === 'activeEarners') {
-    rows.push(
-      new TableRow({
-        children: [
-          createCell('Excess Active Earner Fee', true),
-          createCell(
-            `Fee to issue Credentials to Earners in excess of the Active Earner limit.`,
-          ),
-          createCell(`$${excessActiveEarnerFee} per excess Active Earner`),
-        ],
-      }),
-    )
-  }
-
   const tableData = { rows }
 
   return new Table(tableData)
