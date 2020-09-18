@@ -139,6 +139,9 @@ module.exports = () => {
       new TableRow({
         children: [underlinedCell('Date', '						'), underlinedCell('Date', '						')],
       }),
+      new TableRow({
+        children: [createCell(''), createCell('')],
+      }),
     ],
     borders: noBorders,
   })
