@@ -61,6 +61,7 @@ exports.selfPacedImplementationCell = {
         createText(
           'During the first year of the Term, Credly will provide the following services to Issuer:',
         ),
+        createText('').break(),
       ],
     }),
     new Paragraph({
@@ -91,7 +92,10 @@ exports.selfPacedImplementationCell = {
       },
     }),
     new Paragraph({
-      children: [createText(`Confirm contact details for support requests.`)],
+      children: [
+        createText(`Confirm contact details for support requests.`),
+        createText('').break(),
+      ],
       bullet: {
         level: 0,
       },
@@ -122,6 +126,7 @@ exports.selfPacedImplementationCell = {
     new Paragraph({
       children: [
         createText(`PDF text guides to supplement the video training.`),
+        createText('').break(),
       ],
       bullet: {
         level: 0,
@@ -132,6 +137,7 @@ exports.selfPacedImplementationCell = {
         createText(
           `[1] Credential template developed in collaboration with Credly (up to two feedback cycles).`,
         ),
+        createText('').break(),
       ],
       numbering: {
         level: 0,
@@ -146,6 +152,12 @@ exports.selfPacedImplementationCell = {
       },
     }),
   ],
+  margins: {
+    top: 100,
+    bottom: 100,
+    left: 100,
+    right: 100,
+  },
 }
 
 exports.workshopImplementationCell = {
@@ -155,6 +167,7 @@ exports.workshopImplementationCell = {
         createText(
           'During the first year of the Term, Credly will provide the following services to Issuer:',
         ),
+        createText('').break(),
       ],
     }),
     new Paragraph({
@@ -191,6 +204,7 @@ exports.workshopImplementationCell = {
     new Paragraph({
       children: [
         createText(`Train Administrators on using the Credly System.`),
+        createText('').break(),
       ],
       bullet: {
         level: 0,
@@ -201,6 +215,7 @@ exports.workshopImplementationCell = {
         createText(
           `[1] Credential templates developed in collaboration with Credly (up to two feedback cycles).`,
         ),
+        createText('').break(),
       ],
       numbering: {
         level: 0,
@@ -208,7 +223,10 @@ exports.workshopImplementationCell = {
       },
     }),
     new Paragraph({
-      children: [createText(`Assigned Customer Success Manager.`)],
+      children: [
+        createText(`Assigned Customer Success Manager.`),
+        createText('').break(),
+      ],
       numbering: {
         level: 0,
         reference: 'cell-one',
@@ -222,6 +240,12 @@ exports.workshopImplementationCell = {
       },
     }),
   ],
+  margins: {
+    top: 100,
+    bottom: 100,
+    left: 100,
+    right: 100,
+  },
 }
 
 exports.standardImplementationCell = {
@@ -231,11 +255,13 @@ exports.standardImplementationCell = {
         createText(
           'During the first year of the Term, Credly will provide the following services to Issuer:',
         ),
+        createText('').break(),
       ],
     }),
     new Paragraph({
       children: [
         createText('Kickoff Meeting to discuss Credential program objectives.'),
+        createText('').break(),
       ],
       numbering: {
         level: 0,
@@ -286,6 +312,7 @@ exports.standardImplementationCell = {
         createText(
           `Review Issuer success metrics and identify Credly System analytics to track performance.`,
         ),
+        createText('').break(),
       ],
       bullet: {
         level: 0,
@@ -296,6 +323,7 @@ exports.standardImplementationCell = {
         createText(
           `[5] Credential templates developed in collaboration with Credly (up to two feedback cycles).`,
         ),
+        createText('').break(),
       ],
       numbering: {
         level: 0,
@@ -303,7 +331,10 @@ exports.standardImplementationCell = {
       },
     }),
     new Paragraph({
-      children: [createText(`Assigned Customer Success Manager.`)],
+      children: [
+        createText(`Assigned Customer Success Manager.`),
+        createText('').break(),
+      ],
       numbering: {
         level: 0,
         reference: 'cell-one',
@@ -317,4 +348,10 @@ exports.standardImplementationCell = {
       },
     }),
   ],
+  margins: {
+    top: 100,
+    bottom: 100,
+    left: 100,
+    right: 100,
+  },
 }

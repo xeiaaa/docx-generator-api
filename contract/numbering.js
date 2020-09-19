@@ -11,7 +11,10 @@ const numbering = {
           alignment: AlignmentType.START,
           style: {
             paragraph: {
-              indent: { left: 0, right: 360, hanging: 0 },
+              indent: { left: 360, right: 0, hanging: 360 },
+            },
+            run: {
+              size: 22,
             },
           },
         },
@@ -29,6 +32,9 @@ const numbering = {
             paragraph: {
               indent: { left: 0, right: 100, hanging: 0 },
             },
+            run: {
+              size: 22,
+            },
           },
         },
       ],
@@ -45,6 +51,9 @@ const numbering = {
             paragraph: {
               indent: { left: 0, right: 100, hanging: 0 },
             },
+            run: {
+              size: 22,
+            },
           },
         },
       ],
@@ -60,6 +69,9 @@ const numbering = {
           style: {
             paragraph: {
               indent: { left: 0, right: 100, hanging: 0 },
+            },
+            run: {
+              size: 22,
             },
           },
         },

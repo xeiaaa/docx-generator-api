@@ -112,7 +112,7 @@ module.exports = (services) => {
         createCell(
           `${accessStatement}\n\nCredly will provide Issuer support and maintenance as described in the Agreement.`,
         ),
-        createCell(`$${accessFee}`),
+        createCell(`${accessFee}`),
       ],
     }),
   ]
@@ -144,7 +144,7 @@ module.exports = (services) => {
       children: [
         createCell(nameOfImplementation, true),
         textOfImplementationCell,
-        createCell(`$${implementationFee}`),
+        createCell(`${implementationFee}`),
       ],
     })
 
@@ -163,7 +163,7 @@ module.exports = (services) => {
           createCell(
             `Issuer may issue an additional ${numberOfHistoricCredentials} Credentials during the first contract year of the Term for recognition of achievements before the Effective Date of this Order Form.`,
           ),
-          createCell(`$${feeForHistoricCredentials}`),
+          createCell(`${feeForHistoricCredentials}`),
         ],
       }),
     )
@@ -181,7 +181,7 @@ module.exports = (services) => {
           createCell(
             `Issuer may issue Credentials to an additional ${numberOfHistoricalActiveEarners} Active Earners during the first contract year of the Term for recognition of achievements before the Effective Date of this Order Form.`,
           ),
-          createCell(`$${feeForHistoricalActiveEarners}`),
+          createCell(`${feeForHistoricalActiveEarners}`),
         ],
       }),
     )
@@ -196,7 +196,7 @@ module.exports = (services) => {
           createCell(
             `Issuer shall have access to the Talent Directory feature.`,
           ),
-          createCell(`$${talentDirectoryFee} per year`),
+          createCell(`${talentDirectoryFee} per year`),
         ],
       }),
     )
@@ -211,7 +211,7 @@ module.exports = (services) => {
           createCell(
             `Issuer shall have access to the Employee Directory feature.`,
           ),
-          createCell(`$${employeeDirectoryFee} per year`),
+          createCell(`${employeeDirectoryFee} per year`),
         ],
       }),
     )

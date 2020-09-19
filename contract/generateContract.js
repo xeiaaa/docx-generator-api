@@ -39,7 +39,6 @@ const generateContract = async (contractData = {}) => {
       blocks.emptyLine(),
       blocks.servicesTable(services),
       blocks.emptyLine(),
-      blocks.emptyLine(),
       blocks.emptyLine('Optional:', true),
       blocks.emptyLine(),
       blocks.optionalServicesTable(services),

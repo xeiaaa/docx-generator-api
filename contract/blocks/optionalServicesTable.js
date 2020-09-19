@@ -97,7 +97,7 @@ module.exports = (services) => {
           createCell(
             `Fee to issue Credentials in excess of the limit for this Credential Package.`,
           ),
-          createCell(`$${excessCredentialFee} per excess Credential`),
+          createCell(`${excessCredentialFee} per excess Credential`),
         ],
       }),
     )
@@ -111,7 +111,7 @@ module.exports = (services) => {
           createCell(
             `Fee to issue Credentials to Earners in excess of the Active Earner limit.`,
           ),
-          createCell(`$${excessActiveEarnerFee} per excess Active Earner`),
+          createCell(`${excessActiveEarnerFee} per excess Active Earner`),
         ],
       }),
     )

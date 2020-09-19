@@ -128,9 +128,6 @@ module.exports = (issuer) => {
           createCell(`${corporateLocation} ${entity}`, false, true),
         ],
       }),
-      new TableRow({
-        children: [createCell('', false, true), createCell('', false, true)],
-      }),
     ],
     borders: noBorders,
   })

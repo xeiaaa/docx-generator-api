@@ -58,7 +58,13 @@ module.exports = (agreementListInfo) => {
       numbering: {
         level: 0,
         reference: 'default-reference',
+        style: {
+          paragraph: {
+            size: 30,
+          },
+        },
       },
+      alignment: AlignmentType.JUSTIFIED,
     }),
     new Paragraph({
       children: [
@@ -72,6 +78,7 @@ module.exports = (agreementListInfo) => {
         level: 0,
         reference: 'default-reference',
       },
+      alignment: AlignmentType.JUSTIFIED,
     }),
     new Paragraph({
       children: [
@@ -79,12 +86,12 @@ module.exports = (agreementListInfo) => {
         createLine(
           `The Credential Package will comprise the following services:`,
         ),
-        createLine('').break(),
       ],
       numbering: {
         level: 0,
         reference: 'default-reference',
       },
+      alignment: AlignmentType.JUSTIFIED,
     }),
   ]
 }
