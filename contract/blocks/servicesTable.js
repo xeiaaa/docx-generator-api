@@ -90,6 +90,8 @@ module.exports = (services) => {
     excessActiveEarnerFee = '9999',
 
     implementationFee = '',
+
+    credentialTemplates = '',
   } = services
 
   const accessStatement =
@@ -112,7 +114,7 @@ module.exports = (services) => {
         createCell(
           `${accessStatement}\n\nCredly will provide Issuer support and maintenance as described in the Agreement.`,
         ),
-        createCell(`${accessFee}`),
+        createCell(`${accessFee} per year`),
       ],
     }),
   ]
@@ -124,15 +126,21 @@ module.exports = (services) => {
     switch (implementation) {
       case 'selfPaced':
         nameOfImplementation = 'Self-Paced Onboarding'
-        textOfImplementationCellData = selfPacedImplementationCell
+        textOfImplementationCellData = selfPacedImplementationCell(
+          credentialTemplates,
+        )
         break
       case 'workshop':
         nameOfImplementation = 'Workshop Package'
-        textOfImplementationCellData = workshopImplementationCell
+        textOfImplementationCellData = workshopImplementationCell(
+          credentialTemplates,
+        )
         break
       case 'standard':
         nameOfImplementation = 'Standard Implementation'
-        textOfImplementationCellData = standardImplementationCell
+        textOfImplementationCellData = standardImplementationCell(
+          credentialTemplates,
+        )
         break
       default:
         break

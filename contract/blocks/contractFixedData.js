@@ -54,7 +54,7 @@ const createText = (text = '', isBold = false) => {
   })
 }
 
-exports.selfPacedImplementationCell = {
+exports.selfPacedImplementationCell = (credentialTemplates) => ({
   children: [
     new Paragraph({
       children: [
@@ -135,7 +135,7 @@ exports.selfPacedImplementationCell = {
     new Paragraph({
       children: [
         createText(
-          `[1] Credential template developed in collaboration with Credly (up to two feedback cycles).`,
+          `${credentialTemplates} Credential template developed in collaboration with Credly (up to two feedback cycles).`,
         ),
         createText('').break(),
       ],
@@ -158,9 +158,9 @@ exports.selfPacedImplementationCell = {
     left: 100,
     right: 100,
   },
-}
+})
 
-exports.workshopImplementationCell = {
+exports.workshopImplementationCell = (credentialTemplates) => ({
   children: [
     new Paragraph({
       children: [
@@ -213,7 +213,7 @@ exports.workshopImplementationCell = {
     new Paragraph({
       children: [
         createText(
-          `[1] Credential templates developed in collaboration with Credly (up to two feedback cycles).`,
+          `${credentialTemplates} Credential templates developed in collaboration with Credly (up to two feedback cycles).`,
         ),
         createText('').break(),
       ],
@@ -246,9 +246,9 @@ exports.workshopImplementationCell = {
     left: 100,
     right: 100,
   },
-}
+})
 
-exports.standardImplementationCell = {
+exports.standardImplementationCell = (credentialTemplates) => ({
   children: [
     new Paragraph({
       children: [
@@ -321,7 +321,7 @@ exports.standardImplementationCell = {
     new Paragraph({
       children: [
         createText(
-          `[5] Credential templates developed in collaboration with Credly (up to two feedback cycles).`,
+          `${credentialTemplates} Credential templates developed in collaboration with Credly (up to two feedback cycles).`,
         ),
         createText('').break(),
       ],
@@ -354,4 +354,4 @@ exports.standardImplementationCell = {
     left: 100,
     right: 100,
   },
-}
+})

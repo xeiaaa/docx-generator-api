@@ -64,7 +64,7 @@ module.exports = (agreementListInfo) => {
           },
         },
       },
-      alignment: AlignmentType.JUSTIFIED,
+      alignment: AlignmentType.LEFT,
     }),
     new Paragraph({
       children: [
@@ -78,7 +78,7 @@ module.exports = (agreementListInfo) => {
         level: 0,
         reference: 'default-reference',
       },
-      alignment: AlignmentType.JUSTIFIED,
+      alignment: AlignmentType.LEFT,
     }),
     new Paragraph({
       children: [
@@ -91,7 +91,7 @@ module.exports = (agreementListInfo) => {
         level: 0,
         reference: 'default-reference',
       },
-      alignment: AlignmentType.JUSTIFIED,
+      alignment: AlignmentType.LEFT,
     }),
   ]
 }

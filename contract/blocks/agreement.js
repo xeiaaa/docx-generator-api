@@ -50,6 +50,6 @@ module.exports = (agreement) => {
         `, which is incorporated herein by reference. The provisions of this Order Form do not modify or expand the licenses, representations, and limited warranties set forth in the Agreement. Credly will invoice Issuer as described in the Agreement. Capitalized terms not defined in this Order Form shall have the meanings set forth in the Agreement.`,
       ),
     ],
-    alignment: AlignmentType.JUSTIFIED,
+    alignment: AlignmentType.LEFT,
   })
 }
