@@ -1,9 +1,9 @@
 const contractData = {
   issuer: {
-    name: 'Bret Axl Sebastian',
-    address: '27 Bonifacio St., Brgy. Pag-asa\nOlongapo City, Zambales, PH',
-    corporateLocation: 'SBFZ, PH',
-    entity: 'Sample',
+    name: '',
+    address: '',
+    corporateLocation: '',
+    entity: '',
   },
   agreement: {
     issuerType: 'academic', // academic , non-academic
@@ -15,14 +15,17 @@ const contractData = {
       2) Other (to be entered)
     */
     isFirstDayOfMonth: true,
-    startDate: 'September 18, 2020',
-    term: '[TERM]',
+    startDate: '',
+    term: '',
     autoRenew: false,
     paymentTerms: 'annually', // quarterly, annually
   },
   services: {
-    accessFee: '[ACCESS_FEE]',
-    allotment: '[ALLOTMENT]',
+    isTiered: true,
+    numberOfTiers: 1,
+    tierData: [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}],
+    accessFee: '',
+    allotment: '',
     credentialsOrEarners: 'activeEarners', // credentials, activeEarners
     willPurchaseImplementation: true,
     implementation: 'selfPaced', // selfPaced, workshop, standard,
@@ -30,23 +33,23 @@ const contractData = {
       if credentialsOrEarners === credentials
     */
     willPurchaseHistoricCredentials: true,
-    numberOfHistoricCredentials: '100',
-    feeForHistoricCredentials: '14000',
+    numberOfHistoricCredentials: '',
+    feeForHistoricCredentials: '',
     /*
       if credentialsOrEarners === activeEarners
     */
     willPurchaseHistoricalActiveEarners: true,
-    numberOfHistoricalActiveEarners: '1000',
-    feeForHistoricalActiveEarners: '5000',
+    numberOfHistoricalActiveEarners: '',
+    feeForHistoricalActiveEarners: '',
 
     willPurchaseTalentDirectory: true,
-    talentDirectoryFee: '1000',
+    talentDirectoryFee: '',
 
     willPurchaseDirectory: true,
-    employeeDirectoryFee: '1000',
+    employeeDirectoryFee: '',
 
-    excessCredentialFee: '8888',
-    excessActiveEarnerFee: '9999',
+    excessCredentialFee: '',
+    excessActiveEarnerFee: '',
 
     implementationFee: '',
 
