@@ -238,7 +238,22 @@ module.exports = (services) => {
       rows.push(
         new TableRow({
           children: [
-            createCell('Active Earner Tiers', true, false, undefined),
+            createCell('Active Earner Tiers', true, false, undefined, {
+              borders: {
+                top: {
+                  style: BorderStyle.NONE,
+                  size: 1,
+                },
+                bottom: {
+                  style: BorderStyle.NONE,
+                  size: 1,
+                },
+                right: {
+                  style: BorderStyle.NONE,
+                  size: 1,
+                },
+              },
+            }),
             createCell(
               [
                 {
