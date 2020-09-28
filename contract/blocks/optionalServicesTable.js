@@ -56,6 +56,7 @@ module.exports = (services) => {
     credentialsOrEarners = 'credentials',
     excessCredentialFee = '',
     excessActiveEarnerFee = '',
+    isTiered = false,
   } = services
 
   const rows = [
@@ -89,7 +90,7 @@ module.exports = (services) => {
   ]
 
   // EXCESS FEE
-  if (credentialsOrEarners === 'credentials') {
+  if (credentialsOrEarners === 'credentials' && !isTiered) {
     rows.push(
       new TableRow({
         children: [
@@ -103,7 +104,7 @@ module.exports = (services) => {
     )
   }
 
-  if (credentialsOrEarners === 'activeEarners') {
+  if (credentialsOrEarners === 'activeEarners' && !isTiered) {
     rows.push(
       new TableRow({
         children: [

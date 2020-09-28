@@ -17,6 +17,8 @@ const {
   standardImplementationCell,
 } = require('./contractFixedData')
 
+const { formatCurrency } = require('../helpers')
+
 const createCell = (
   text = '',
   isBold = false,
@@ -198,13 +200,16 @@ module.exports = (services) => {
                   },
                 },
               }),
-              createCell(`${tierData[index].count} per year`, false),
-              createCell(tierData[index].fee, false),
               createCell(
-                `$${
-                  parseInt(tierData[index].count) *
-                  parseInt(tierData[index].fee)
-                } per year`,
+                `${tierData[index].count} Credentials per year`,
+                false,
+              ),
+              createCell(formatCurrency(tierData[index].fee), false),
+              createCell(
+                `${formatCurrency(
+                  parseFloat(tierData[index].count) *
+                    parseFloat(tierData[index].fee),
+                )} per year`,
                 false,
               ),
             ],
@@ -218,8 +223,8 @@ module.exports = (services) => {
             createCell('Access to the Credly System', true),
             createCell(
               `Issuer shall purchase one Credential Tier every contract year and inform Credly of the Credential Tier it wishes to purchase upon at least ten (10) days prior to the beginning of the next contract year. If Issuer does not provide such information, the parties agree that Issuer shall purchase the same the Credential Tier as it purchased the previous contract year.  Should Issuer desire to issue additional Credentials beyond those allotted in the purchased Credential Tier, Issuer may purchase excess Credentials at the Price per Credential at its chosen tier. \n
-            For the first contract year, Issuer shall purchase the ${tierData[0].count} Credential tier. \n
-            Credly will provide Issuer support and maintenance as described in the Agreement. 
+For the first contract year, Issuer shall purchase the ${tierData[0].count} Credential tier. \n
+Credly will provide Issuer support and maintenance as described in the Agreement. 
             `,
               false,
               false,
@@ -295,13 +300,16 @@ module.exports = (services) => {
                   },
                 },
               }),
-              createCell(`${tierData[index].count} per year`, false),
-              createCell(tierData[index].fee, false),
               createCell(
-                `$${
-                  parseInt(tierData[index].count) *
-                  parseInt(tierData[index].fee)
-                } per year`,
+                `${tierData[index].count} Active Earners per year`,
+                false,
+              ),
+              createCell(formatCurrency(tierData[index].fee), false),
+              createCell(
+                `${formatCurrency(
+                  parseFloat(tierData[index].count) *
+                    parseFloat(tierData[index].fee),
+                )} per year`,
                 false,
               ),
             ],
@@ -315,8 +323,8 @@ module.exports = (services) => {
             createCell('Access to the Credly System', true),
             createCell(
               `Issuer shall purchase one Active Earner Tier every contract year and inform Credly of the Active Earner Tier it wishes to purchase upon at least ten (10) days prior to the beginning of the next contract year. If Issuer does not provide such information, the parties agree that Issuer shall purchase the same the Active Earner Tier that it purchased the previous contract year.  Should Issuer desire to issue additional Active Earners beyond those allotted in the purchased Active Earner Tier, Issuer may purchase excess Active Earners at the Price per Active Earner for the Active Earner Tier it purchased. \n
-              For the first contract year, Issuer shall purchase ${tierData[0].count} Active Earner Tier.\n
-              Credly will provide Issuer support and maintenance as described in the Agreement. `,
+For the first contract year, Issuer shall purchase ${tierData[0].count} Active Earner Tier.\n
+Credly will provide Issuer support and maintenance as described in the Agreement. `,
               false,
               false,
               0,
