@@ -24,6 +24,8 @@ const contractData = {
     isTiered: true,
     numberOfTiers: 1,
     tierData: [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}],
+    selectedTier: 0,
+
     accessFee: '',
     allotment: '',
     credentialsOrEarners: 'activeEarners', // credentials, activeEarners
