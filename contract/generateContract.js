@@ -42,10 +42,27 @@ const generateContract = async (contractData = {}) => {
       blocks.emptyLine('Optional:', true),
       blocks.emptyLine(),
       blocks.optionalServicesTable(services),
-      blocks.emptyLine(),
-      blocks.emptyLine(),
-      blocks.emptyLine(),
-      blocks.signatureBlock(),
+    ],
+    footers: {
+      default: new Footer({
+        children: [new Paragraph('Confidential and Proprietary')],
+      }),
+    },
+    headers: {
+      default: new Header({
+        children: [
+          new Paragraph({
+            children: [logo],
+            alignment: AlignmentType.RIGHT,
+          }),
+        ],
+      }),
+    },
+  })
+
+  doc.addSection({
+    children: [
+      blocks.signatureBlock()
     ],
     footers: {
       default: new Footer({

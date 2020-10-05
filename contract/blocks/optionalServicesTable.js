@@ -64,7 +64,7 @@ module.exports = (services) => {
       children: [
         createCell('SERVICES', true, false, 22),
         createCell('DESCRIPTION', true, false, 56),
-        createCell('FEE / ALOTTMENT', true, false, 22),
+        createCell('FEE / ALLOTMENT', true, false, 22),
       ],
     }),
 

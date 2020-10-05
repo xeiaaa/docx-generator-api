@@ -132,7 +132,7 @@ module.exports = (services) => {
       children: [
         createCell('SERVICES', true, false, 22),
         createCell('DESCRIPTION', true, false, 56, { columnSpan: 2 }),
-        createCell('FEE / ALOTTMENT', true, false, 22),
+        createCell('FEE / ALLOTMENT', true, false, 22),
       ],
     }),
   ]
@@ -182,6 +182,11 @@ module.exports = (services) => {
 
       // loop x times
       Array.from(Array(parseInt(numberOfTiers)).keys()).map((_, index) => {
+
+        const tierAccessFee =
+          parseFloat(tierData[index].count) * parseFloat(tierData[index].fee)
+        const isWholeNumber = tierAccessFee - Math.floor(tierAccessFee) == 0
+        
         rows.push(
           new TableRow({
             children: [
@@ -207,10 +212,11 @@ module.exports = (services) => {
               ),
               createCell(formatCurrency(tierData[index].fee), false),
               createCell(
-                `${formatCurrency(
-                  parseFloat(tierData[index].count) *
-                    parseFloat(tierData[index].fee),
-                )} per year`,
+                `${
+                  isWholeNumber
+                    ? formatCurrency(tierAccessFee).replace('.00', '')
+                    : formatCurrency(tierAccessFee)
+                } per year`,
                 false,
               ),
             ],
@@ -264,7 +270,7 @@ Credly will provide Issuer support and maintenance as described in the Agreement
             createCell(
               [
                 {
-                  text: 'Credential Allotment ',
+                  text: 'Active Earner Allotment ',
                   bold: true,
                 },
                 {
@@ -275,7 +281,7 @@ Credly will provide Issuer support and maintenance as described in the Agreement
               ],
               true,
             ),
-            createCell('Price per Credential', true),
+            createCell('Price per Active Earner', true),
             createCell('Annual Access Fee', true),
           ],
         }),
@@ -283,6 +289,10 @@ Credly will provide Issuer support and maintenance as described in the Agreement
 
       // loop x times
       Array.from(Array(parseInt(numberOfTiers)).keys()).map((_, index) => {
+        const tierAccessFee =
+          parseFloat(tierData[index].count) * parseFloat(tierData[index].fee)
+        const isWholeNumber = tierAccessFee - Math.floor(tierAccessFee) == 0
+
         rows.push(
           new TableRow({
             children: [
@@ -308,10 +318,11 @@ Credly will provide Issuer support and maintenance as described in the Agreement
               ),
               createCell(formatCurrency(tierData[index].fee), false),
               createCell(
-                `${formatCurrency(
-                  parseFloat(tierData[index].count) *
-                    parseFloat(tierData[index].fee),
-                )} per year`,
+                `${
+                  isWholeNumber
+                    ? formatCurrency(tierAccessFee).replace('.00', '')
+                    : formatCurrency(tierAccessFee)
+                } per year`,
                 false,
               ),
             ],
