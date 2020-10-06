@@ -135,7 +135,7 @@ exports.selfPacedImplementationCell = (credentialTemplates) => ({
     new Paragraph({
       children: [
         createText(
-          `${credentialTemplates} Credential template developed in collaboration with Credly (up to two feedback cycles).`,
+          `${credentialTemplates} Credential template${credentialTemplates > 1 ? 's':''} developed in collaboration with Credly (up to two feedback cycles).`,
         ),
         createText('').break(),
       ],
@@ -213,7 +213,7 @@ exports.workshopImplementationCell = (credentialTemplates) => ({
     new Paragraph({
       children: [
         createText(
-          `${credentialTemplates} Credential templates developed in collaboration with Credly (up to two feedback cycles).`,
+          `${credentialTemplates} Credential template${credentialTemplates > 1 ? 's':''} developed in collaboration with Credly (up to two feedback cycles).`,
         ),
         createText('').break(),
       ],
@@ -321,7 +321,7 @@ exports.standardImplementationCell = (credentialTemplates) => ({
     new Paragraph({
       children: [
         createText(
-          `${credentialTemplates} Credential templates developed in collaboration with Credly (up to two feedback cycles).`,
+          `${credentialTemplates} Credential template${credentialTemplates > 1 ? 's':''} developed in collaboration with Credly (up to two feedback cycles).`,
         ),
         createText('').break(),
       ],

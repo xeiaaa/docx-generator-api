@@ -140,6 +140,8 @@ module.exports = (services) => {
   // IS TIERED?
   if (isTiered) {
     // loop numberOfTiers, tierData
+    const selectedTierAccessFee = parseFloat(tierData[selectedTier].count) * parseFloat(tierData[selectedTier].fee)
+    const isSelectedTierAccessFeeWhole = selectedTierAccessFee - Math.floor(selectedTierAccessFee) == 0
     if (credentialsOrEarners === 'credentials') {
       rows.push(
         new TableRow({
@@ -239,9 +241,10 @@ Credly will provide Issuer support and maintenance as described in the Agreement
               { columnSpan: 2 },
             ),
             createCell(
-              `$${
-                parseInt(tierData[selectedTier].count) *
-                parseInt(tierData[selectedTier].fee)
+              `${
+                isSelectedTierAccessFeeWhole
+                    ? formatCurrency(selectedTierAccessFee).replace('.00', '')
+                    : formatCurrency(selectedTierAccessFee)
               } for the first year of the Term`,
             ),
           ],
@@ -291,6 +294,7 @@ Credly will provide Issuer support and maintenance as described in the Agreement
       Array.from(Array(parseInt(numberOfTiers)).keys()).map((_, index) => {
         const tierAccessFee =
           parseFloat(tierData[index].count) * parseFloat(tierData[index].fee)
+          console.log(tierData[index], tierAccessFee)
         const isWholeNumber = tierAccessFee - Math.floor(tierAccessFee) == 0
 
         rows.push(
@@ -344,16 +348,18 @@ Credly will provide Issuer support and maintenance as described in the Agreement
               { columnSpan: 2 },
             ),
             createCell(
-              `$${
-                parseInt(tierData[selectedTier].count) *
-                parseInt(tierData[selectedTier].fee)
-              } for the first year of the Term`,
+              `${
+                isSelectedTierAccessFeeWhole
+                    ? formatCurrency(selectedTierAccessFee).replace('.00', '')
+                    : formatCurrency(selectedTierAccessFee)
+                  } for the first year of the Term`,
             ),
           ],
         }),
       )
     }
   } else {
+
     rows.push(
       new TableRow({
         children: [
@@ -470,7 +476,7 @@ Credly will provide Issuer support and maintenance as described in the Agreement
             0,
             { columnSpan: 2 },
           ),
-          createCell(`${talentDirectoryFee} per year`),
+          createCell(`${talentDirectoryFee}`),
         ],
       }),
     )
@@ -489,7 +495,7 @@ Credly will provide Issuer support and maintenance as described in the Agreement
             0,
             { columnSpan: 2 },
           ),
-          createCell(`${employeeDirectoryFee} per year`),
+          createCell(`${employeeDirectoryFee}`),
         ],
       }),
     )
