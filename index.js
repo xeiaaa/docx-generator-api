@@ -32,6 +32,13 @@ app.post('/docx', async (req, res) => {
   }
 })
 
+app.post('/cb', async (req, res) => {
+  console.log('************\n')
+  console.log(req.body)
+  console.log('\n************')
+  res.send('ok')
+})
+
 const PORT = process.env.PORT || 5000
 app.listen(PORT, () => {
   console.log(`LISTENING TO PORT ${PORT}`)
