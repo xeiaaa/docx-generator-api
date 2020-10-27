@@ -20,23 +20,23 @@ module.exports = (agreement) => {
   const agreementLines =
     issuerType === 'academic'
       ? [
-          createLine(
-            `pursuant to version 1.1 of the Credential Management Agreement for Institutions of Higher Education (the “`,
-          ),
-          createLine(`Agreement`, true),
-          createLine(
-            `”), available online at https://info.credly.com/credential-management-agreement-institutions-of-higher-education.`,
-          ),
-        ]
+        createLine(
+          `pursuant to version 1.7 of the Credential Management Agreement (the “`,
+        ),
+        createLine(`Agreement`, true),
+        createLine(
+          `”), available online at https://info.credly.com/credential-management-agreement`,
+        ),
+      ]
       : [
-          createLine(
-            `pursuant to version 1.7 of the Credential Management Agreement (the “`,
-          ),
-          createLine(`Agreement`, true),
-          createLine(
-            `”), available online at https://info.credly.com/credential-management-agreement.`,
-          ),
-        ]
+        createLine(
+          `pursuant to version 1.1 of the Credential Management Agreement for Institutions of Higher Education (the “`,
+        ),
+        createLine(`Agreement`, true),
+        createLine(
+          `”), available online at https://info.credly.com/credential-management-agreement-institutions-of-higher-education`,
+        ),
+      ]
 
   return new Paragraph({
     children: [
