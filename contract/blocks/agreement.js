@@ -18,7 +18,7 @@ module.exports = (agreement) => {
   //     : `pursuant to version 1.1 of the Credential Management Agreement for Institutions of Higher Education (the “Agreement”), available online at https://info.credly.com/credential-management-agreement-institutions-of-higher-education.`
 
   const agreementLines =
-    issuerType === 'academic'
+    issuerType !== 'academic'
       ? [
         createLine(
           `pursuant to version 1.7 of the Credential Management Agreement (the “`,
